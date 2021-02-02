@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 
+import 'CourseDetails.dart';
+import 'Star.dart';
+import 'navigation.dart';
+
 void main() {
   runApp(
   MaterialApp(
-    home: MyApp(),
+    home: Star(),
+//    initialRoute: '/',
+//    routes: {
+//      '/' : (ctx)=>Navigation(),
+//      CourseDetail.routeName : (ctx) => CourseDetail(),
+//
+//    },
   )
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isFavorite=false;
   Widget _buildIcon(IconData icon, String title){
       return Container(
 
@@ -24,6 +40,7 @@ class MyApp extends StatelessWidget {
           )
       );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +56,7 @@ class MyApp extends StatelessWidget {
 //            height: MediaQuery.of(context).size.height* 0.5,
 
 
-            child: Image.network("https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg"),
+            child: Image.asset('Assets/Image/yared.jpg'),
           ),
         Container(
          margin: EdgeInsets.all(25),
@@ -66,7 +83,9 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
 
-                      Icon(Icons.star, color: Colors.red,),
+                     IconButton(icon: this._isFavorite ? Icon(Icons.star, color: Colors.red,) :  Icon(Icons.star_border, color: Colors.red,) , onPressed: (){
+                       print("This icon clicked");
+                     }),
                       Text("41")
 
                 ],
